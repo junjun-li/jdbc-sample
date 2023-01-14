@@ -26,8 +26,12 @@ public class QueryCommand implements Command {
                 "root",
                 "11776174"
             );
-            Statement stmt = coon.createStatement();
-            ResultSet res = stmt.executeQuery("select * from employee where dname='" + dName + "'");
+            // Statement stmt = coon.createStatement();
+            // ResultSet res = stmt.executeQuery("select * from employee where dname='" + dName + "'");
+            String sql = "select * from employee where dname=?";
+            PreparedStatement pstmt = coon.prepareStatement(sql);
+            pstmt.setString(1, dName);
+            ResultSet res = pstmt.executeQuery();
             while (res.next()) {
                 Integer eno = res.getInt("eno");
                 String ename = res.getString("ename");

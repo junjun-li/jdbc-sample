@@ -17,8 +17,9 @@ public class HumanResourceApplication {
             case 1:
                 Command command = new QueryCommand();
                 command.execute();
+                break;
             case 2:
-                // System.out.println("办理员工入职");
+                System.out.println("办理员工入职");
         }
     }
 }
