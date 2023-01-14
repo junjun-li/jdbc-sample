@@ -8,6 +8,8 @@ public class HumanResourceApplication {
     public static void main(String[] args) {
         System.out.println("1-查询部门员工");
         System.out.println("2-新增入职员工");
+        System.out.println("3-删除员工");
+        System.out.println("4-调整薪资");
         Scanner scan = new Scanner(System.in);
         if (!scan.hasNextInt()) {
             System.out.println("请输入一个数字");
@@ -20,6 +22,12 @@ public class HumanResourceApplication {
                 break;
             case 2:
                 new InsertCommand().execute();
+                break;
+            case 3:
+                new DeleteCommand().execute();
+                break;
+            case 4:
+                new DeleteCommand().execute();
                 break;
         }
     }
