@@ -7,29 +7,32 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class DeleteCommand implements Command {
+public class UpdateCommand implements Command {
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("请输入员工编号");
         int eno = scanner.nextInt();
-        Connection conn = null;
+        System.out.println("请输入调整薪资");
+        float salary = scanner.nextFloat();
+        Connection coon = null;
         try {
-            conn = DBUtils.getConnection();
-            PreparedStatement pstmt = conn.prepareStatement("delete from imooc.employee where eno = ?");
-            pstmt.setInt(1, eno);
+            coon = DBUtils.getConnection();
+            PreparedStatement pstmt = coon.prepareStatement("update imooc.employee set salary = ? where eno = ?");
+            pstmt.setFloat(1, salary);
+            pstmt.setInt(2, eno);
             int count = pstmt.executeUpdate();
             if (count == 1) {
-                System.out.println("员工已删除");
+                System.out.println("薪资更新成功");
             } else {
-                System.out.println("未找到" + eno + "编号的员工");
+                System.out.println("未找到" + eno + "编号员工数据");
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBUtils.closeConnection(conn);
+            DBUtils.closeConnection(coon);
         }
     }
 }

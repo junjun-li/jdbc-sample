@@ -27,7 +27,7 @@ public class HumanResourceApplication {
                 new DeleteCommand().execute();
                 break;
             case 4:
-                new DeleteCommand().execute();
+                new UpdateCommand().execute();
                 break;
         }
     }
