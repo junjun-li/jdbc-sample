@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class HumanResourceApplication {
     public static void main(String[] args) {
         System.out.println("1-查询部门员工");
+        System.out.println("2-新增入职员工");
         Scanner scan = new Scanner(System.in);
         if (!scan.hasNextInt()) {
             System.out.println("请输入一个数字");
@@ -15,11 +16,11 @@ public class HumanResourceApplication {
         Integer cmd = scan.nextInt();
         switch (cmd) {
             case 1:
-                Command command = new QueryCommand();
-                command.execute();
+                new QueryCommand().execute();
                 break;
             case 2:
-                System.out.println("办理员工入职");
+                new InsertCommand().execute();
+                break;
         }
     }
 }
