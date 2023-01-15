@@ -14,10 +14,10 @@ public class TransactionSample {
             // 关闭JDBC自动提交模式
             conn.setAutoCommit(false);
             String sql = "insert into imooc.employee(eno, ename, salary, dname) values (?,?,?,?)";
-            for (int i = 0; i < 10; i++) {
-                if (i == 5) {
-                    throw new RuntimeException("插入失败");
-                }
+            for (int i = 0; i < 20; i++) {
+                // if (i == 5) {
+                //     throw new RuntimeException("插入失败");
+                // }
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 pstmt.setInt(1, i);
                 pstmt.setString(2, "员工" + i);
